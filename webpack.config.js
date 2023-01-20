@@ -1,5 +1,5 @@
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
-const webpack = require("webpack");
 
 module.exports = {
   entry: "./src/index.tsx",
@@ -32,13 +32,10 @@ module.exports = {
     static: path.join(__dirname, "public/"),
     port: 3000,
     devMiddleware: {
-      publicPath: "http://localhost:3000/dist/"
+      publicPath: "http://localhost:3000/dist/",
+      serverSideRender: true
     },
     hot: true
   },
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: "./src/index.html"
-    })
-  ]
+  plugins: [new HtmlWebpackPlugin()]
 };
